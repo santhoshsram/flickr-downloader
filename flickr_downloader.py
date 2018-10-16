@@ -571,18 +571,7 @@ def LogoutHandler():
 ##
 cmd_args = ParseCommandLineArgs()
 SetVerbosity(cmd_args.verbose)
-
 SetAPIKeys(cmd_args.api_key, cmd_args.api_secret)
-
-user = flickr_api.Person.findByEmail("santhoshsram@yahoo.com")
-#photos = user.getPhotos()
-photosets = user.getPhotosets()
-#print ("User info: " + str(user))
-#print ("Photosets Info: " + str(photosets.info))
-
-tstamp = time.strftime('%Y%m%d%H%M%S')
-folder_name = user.username.replace(" ", "_") + "_" + tstamp
-#print ("New Local Folder: " + folder_name)
 
 if cmd_args.cmd == "download":
     DownloadCommandHelper(cmd_args)
@@ -595,16 +584,3 @@ elif cmd_args.cmd == "logout":
     exit(0)
 
 exit(0)
-
-#for photoset in photosets:
-#    if photoset.title == 'bulkdownload':
-#        print ("Photoset found. Title: " + photoset.title + " ID: " + str(photoset.id))
-#        count = 0
-#        photos = photoset.getPhotos(page=3)
-#        print ("Photos Info: " + str(photos.info))
-#        for photo in photos:
-#            count = count + 1
-#        print ("Actual photos in photoset: " + str(count))
-
-        #print ("Saving " + photo.title)
-        #photo.save(photo.title + ".jpg")
