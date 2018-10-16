@@ -272,7 +272,7 @@ def WritePhotos2Disk(photos, location, dry_run):
         abs_file_path = os.path.join(location, photo.id)
         VerbosePrint(VERBOSE_HIGH,
                      "Downloading photo %s..." % (abs_file_path + ext))
-        
+
         if dry_run == False:
             photo.save(abs_file_path)
 
@@ -425,7 +425,7 @@ def DownloadAll(user, location, dry_run):
 def DownloadCommandHelper(cmd_args):
     flickr_email = cmd_args.flickr_email
     location = cmd_args.location
-    
+
     SetAuthKeys()
 
     # If location is set, then default to current working directory
