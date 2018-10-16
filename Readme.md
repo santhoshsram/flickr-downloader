@@ -6,7 +6,7 @@ A simple python script that uses the Flickr APIs (through the [flickr_api](https
 2. flick_api Python module. Can be installed from pip.
 
 ## Getting Started
-After cloning this git repo or downloading the python file
+After cloning this git repo or downloading the python file follow below steps to get started.
 
 ### 1. Install flickr_api module
 ```pip install flickr_api```
