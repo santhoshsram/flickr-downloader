@@ -231,12 +231,20 @@ def CreateLocation(location, dry_run):
     if dry_run == False:
         try:
             os.makedirs(location)
-        except OSError as err:
+        except (IOError, OSError) as err:
             VerbosePrint(VERBOSE_HIGHEST, "Error: Failed to create folder %s" %
                          location)
+            VerbosePrint(VERBOSE_HIGHEST, "Error Message: %s" % str(err))
             exit(1)
+    except Exception as err:
+        VerbosePrint(VERBOSE_HIGHEST,
+                     "Unknown error occurred when trying to create folder  %s" %
+                     location)
+        VerbosePrint(VERBOSE_HIGHEST, "Error Message: %s" % str(err))
+        exit(1)
 
     VerbosePrint(VERBOSE_LOW, "Created folder %s" % location)
+
 
 ##
 ## WritePhotos2Disk(photos, location, dry_run)
@@ -434,9 +442,17 @@ def DownloadCommandHelper(cmd_args):
 
     try:
         user = flickr_api.Person.findByEmail(flickr_email)
-    except flickr_api.flickrerrors.FlickrAPIError:
+    except flickr_api.flickrerrors.FlickrAPIError as err:
         VerbosePrint(VERBOSE_HIGHEST, "Invalid flickr email. User not found.")
+        VerbosePrint(VERBOSE_HIGHEST, "Error Message: %s" % str(err))
         exit(1)
+    except Exception as err:
+        VerbosePrint(VERBOSE_HIGHEST,
+                     "Unknown error occurred when trying to get user by email %s" %
+                     flickr_email)
+        VerbosePrint(VERBOSE_HIGHEST, "Error Message: %s" % str(err))
+        exit(1)
+
 
     VerbosePrint(VERBOSE_LOW,
                  "Downloading from flickr account with id: %s, username: %s" %
