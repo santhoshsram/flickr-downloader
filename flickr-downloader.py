@@ -591,12 +591,9 @@ SetAPIKeys(cmd_args.api_key, cmd_args.api_secret)
 
 if cmd_args.cmd == "download":
     DownloadCommandHelper(cmd_args)
-    exit(0)
 elif cmd_args.cmd == "login":
     LoginHandler(cmd_args.auth_token, cmd_args.auth_secret, cmd_args.overwrite)
-    exit(0)
 elif cmd_args.cmd == "logout":
     LogoutHandler()
-    exit(0)
 
 exit(0)
