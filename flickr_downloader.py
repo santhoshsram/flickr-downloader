@@ -236,12 +236,12 @@ def CreateLocation(location, dry_run):
                          location)
             VerbosePrint(VERBOSE_HIGHEST, "Error Message: %s" % str(err))
             exit(1)
-    except Exception as err:
-        VerbosePrint(VERBOSE_HIGHEST,
-                     "Unknown error occurred when trying to create folder  %s" %
-                     location)
-        VerbosePrint(VERBOSE_HIGHEST, "Error Message: %s" % str(err))
-        exit(1)
+        except Exception as err:
+            VerbosePrint(VERBOSE_HIGHEST,
+                         "Unknown error occurred when trying to create folder  %s" %
+                         location)
+            VerbosePrint(VERBOSE_HIGHEST, "Error Message: %s" % str(err))
+            exit(1)
 
     VerbosePrint(VERBOSE_LOW, "Created folder %s" % location)
 
